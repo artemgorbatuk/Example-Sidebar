@@ -1,0 +1,86 @@
+:root {
+    --SidebarBackgroundColor: #ffffff;
+    --SidebarSelectorColor: #ffffff;
+    --black: #000000;
+    --white: #ffffff;
+    --grey: #3c4858;
+    --lightgrey: #f8f9fa;
+    --purple: #9c27b0;
+    --blue: #00bcd4;
+    --green: #4caf50;
+    --orange: #ff9800;
+    --red: #f44336;
+    --rose: #e91e63;
+}
+
+
+[data-color=SidebarBackgroundColor] {
+    background-color: var(--SidebarBackgroundColor) !important;
+}
+[data-color=SidebarBackgroundColor]::after {
+    background-color: var(--SidebarBackgroundColor) !important;
+    opacity: 0.8;
+}
+
+[data-color=black] {
+    background-color: var(--black) !important;
+}
+[data-color=white] {
+    background-color: var(--white) !important;
+}
+[data-color=grey] {
+    background-color: var(--grey) !important;
+}
+[data-color=lightgrey] {
+    background-color: var(--lightgrey) !important;
+}
+[data-color=purple] {
+    background-color: var(--purple) !important;
+}
+[data-color=blue] {
+    background-color: var(--blue) !important;
+}
+[data-color=green] {
+    background-color: var(--green) !important;
+}
+[data-color=orange] {
+    background-color: var(--orange) !important;
+}
+[data-color=red] {
+    background-color: var(--red) !important;
+}
+[data-color=rose] {
+    background-color: var(--rose) !important;
+}
+
+
+.color-black {
+    background-color: var(--black);
+}
+.color-white {
+    background-color: var(--white);
+}
+.color-grey {
+    background-color: var(--grey);
+}
+.color-lightgrey {
+    background-color: var(--lightgrey);
+}
+.color-purple {
+    background-color: var(--purple);
+}
+.color-blue {
+    background-color: var(--blue);
+}
+.color-green {
+    background-color: var(--green);
+}
+.color-orange {
+    background-color: var(--orange);
+}
+.color-red {
+    background-color: var(--red);
+}
+.color-rose {
+    background-color: var(--rose);
+}

@@ -1,0 +1,167 @@
+html {
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+    line-height: 1.15 !important;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    line-height: 1.15 !important;
+    overflow: hidden;
+}
+
+main {
+    display: block;
+    height: calc(100vh);
+    width: calc(100vw - 250px);
+    margin: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+header {
+    display: block;
+    line-height: 60px;
+    width: calc(100vw - 250px - 2 rem);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    z-index: 100;
+}
+
+content {
+    display: block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+footer {
+    display: block;
+    line-height: 60px;
+    width: calc(100vw - 250px - 2 rem);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    z-index: 100;
+}
+    footer.footer-fixed {
+        /*position: fixed;
+        bottom: 5px;*/
+    }
+
+configurator {
+}
+
+    configurator > .configurator-button-show {
+        position: absolute;
+        bottom: 20px;
+        right: 3rem;
+        width: 55px;
+        height: 55px;
+        background: transparent;
+        color: #000;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .16);
+        z-index: 900;
+        cursor: pointer;
+    }
+
+        configurator > .configurator-button-show > .configurator-icon {
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    configurator > .configurator-window {
+        position: fixed !important;
+        top: 0;
+        height: 100%;
+        left: auto !important;
+        right: -360px;
+        width: 360px;
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .16);
+        color: #000;
+        background-color: #fff;
+        transition: 0.7s ease;
+        transform: unset !important;
+        z-index: 1000;
+    }
+
+        configurator > .configurator-window.show {
+            right: 0px;
+        }
+
+        configurator > .configurator-window > .configurator-button-close {
+            position: absolute;
+            right: 20px;
+            border: none;
+            color: #000;
+            cursor: pointer;
+        }
+
+            configurator > .configurator-window > .configurator-button-close > .configurator-icon {
+                pointer-events: none;
+                font-size: 1.3rem;
+            }
+
+
+.configurator-widget-color {
+    padding: 5px 0px;
+}
+
+    .configurator-widget-color > .configurator-button-color {
+        position: relative;
+        display: inline-block;
+        height: 25px;
+        width: 25px;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+    }
+
+
+.configurator-widget-image {
+    padding: 5px 0px;
+}
+
+    .configurator-widget-image > .configurator-button-image {
+        display: inline-block;
+        height: 150px;
+        width: 75px;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: 50%;
+        cursor: pointer;
+    }
+        .configurator-widget-image > .configurator-button-image:hover {
+            border: 3px solid #fff;
+        }
+
+
+.horizontal-line {
+    background-color: transparent;
+    background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), #fff, hsla(0, 0%, 100%, 0));
+}

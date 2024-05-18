@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta http-equiv="Access-Control-Allow-Headers" content="X-Requested-With, Content-Type, Accept, Origin">
+    <title>sidebar</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/fontawesome.all.min.css" rel="stylesheet" />
+    <link href="assets/css/colors.css" rel="stylesheet" />
+    <link href="assets/css/site.css" rel="stylesheet" />
+    <link href="assets/css/layout.css" rel="stylesheet" />
+    <link href="assets/css/sidebar.css" rel="stylesheet" />
+    <link href="assets/css/tooltip.css" rel="stylesheet" />
+</head>
+<body>
+    <sidebar>
+        <div class="sidebar" data-color="SidebarBackgroundColor">
+            <div class="sidebar-header">
+                <div class="navbar-brand d-block">
+                    Sidebar
+                </div>
+            </div>
+            <hr class="horizontal-line my-1" />
+            <div class="sidebar-header">
+                <div class="user-pic" data-image="user_pic" aria-hidden="true"></div>
+                <div class="user-name"> Cat Leopold </div>
+            </div>
+            <hr class="horizontal-line my-1" />
+            <div class="sidebar-body">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <div class="sidebar-icon-left fa fa-lg fa-home" aria-hidden="true"></div>
+                            <div class="sidebar-text-middle flex-fill">Home</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidebar-toggle-item collapsed" data-bs-toggle="collapse" aria-expanded="false" href="#security" role="button" aria-controls="security">
+                            <div class="sidebar-icon-left fa fa-lg fa-lock" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Security</div>
+                            <div class="sidebar-icon-right ml-auto fa fa-chevron-right" aria-hidden="true"></div>
+                        </a>
+                        <div class="collapse" id="security">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a href="users.html" class="nav-link">
+                                        <div class="sidebar-icon-left fa fa-lg fa-user" aria-hidden="false"></div>
+                                        <div class="sidebar-text-middle flex-fill">Users</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="roles.html" class="nav-link">
+                                        <div class="sidebar-icon-left fa fa-lg fa-key" aria-hidden="false"></div>
+                                        <div class="sidebar-text-middle flex-fill">Roles</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="accesses.html" class="nav-link">
+                                        <div class="sidebar-icon-left fa fa-lg fa-lock" aria-hidden="false"></div>
+                                        <div class="sidebar-text-middle flex-fill">Accesses</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="orgstructure.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-sitemap" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Org structure</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidebar-toggle-item collapsed" data-bs-toggle="collapse" aria-expanded="false" href="#humanresources" role="button" aria-controls="humanresources">
+                            <div class="sidebar-icon-left fa fa-lg fa-people-group" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Human resources</div>
+                            <div class="sidebar-icon-right ml-auto fa fa-chevron-right" aria-hidden="true"></div>
+                        </a>
+                        <div class="collapse" id="humanresources">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a href="employees.html">
+                                        <div class="sidebar-icon-left fa fa-lg fa-users" aria-hidden="false"></div>
+                                        <div class="sidebar-text-middle flex-fill">Employees</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="vacations.html">
+                                        <div class="sidebar-icon-left fa fa-lg fa-plane" aria-hidden="false"></div>
+                                        <div class="sidebar-text-middle flex-fill">Vacations</div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="birthday.html">
+                                        <div class="sidebar-icon-left fa fa-lg fa-birthday-cake" aria-hidden="false"></div>
+                                        <div class="sidebar-text-middle flex-fill">Birthdays</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element1.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 01. A very long text. The text was cut by logic.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element2.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 02.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element3.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 03.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element4.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 04.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element5.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 05.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element6.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 06.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element7.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 07.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element8.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 08.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element9.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 09.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="element10.html">
+                            <div class="sidebar-icon-left fa fa-lg fa-male" aria-hidden="false"></div>
+                            <div class="sidebar-text-middle flex-fill">Element 10.</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="horizontal-line my-1" />
+            <div class="sidebar-footer">
+                <a class="sidebar-icon-left m-2 " aria-hidden="true" href="https://www.youtube.com" target="_blank"><i class="fa fa-2x fa-brands fa-youtube"></i></a>
+                <a class="sidebar-icon-left m-2 " aria-hidden="true" href="https://www.facebook.com" target="_blank"><i class="fa fa-2x fa-brands fa-facebook"></i></a>
+                <a class="sidebar-icon-left m-2 " aria-hidden="true" href="https://www.instagram.com" target="_blank"><i class="fa fa-2x fa-brands fa-instagram"></i></a>
+                <a class="sidebar-icon-left m-2 " aria-hidden="true" href="https://ru.linkedin.com" target="_blank"><i class="fa fa-2x fa-brands fa-linkedin"></i></a>
+            </div>
+            <div class="sidebar-background" data-image="selected"></div>
+        </div>
+    </sidebar>
+    <main>
+        <header data-color="SidebarBackgroundColor">
+            <div>
+                <i class="fa fa-regular fa-bell"></i>
+            </div>
+        </header>
+        <content>
+            План работы:
+
+            <ul type="square">
+                <li>Название проекта</li>
+                <li>Профайл пользователя</li>
+                <ul type="square">
+                    <li>Настройки профайла</li>
+                    <li>Настройки сайта</li>
+                    <ul type="square">
+                        <li>Цветовая схема сайта</li>
+                        <li>Цветовая схема селектора</li>
+                        <li>Мини правая панель</li>
+                        <li>Фиксированная верхняя панель</li>
+                        <li>Картинка панели</li>
+                    </ul>
+                </ul>
+            </ul>
+
+            Источник вдохновения: <a href="https://www.creative-tim.com/product/buy/bundle/html-bundle" target="_blank">content</a>
+
+            <!--<br>
+            <br>
+            <br>
+
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>
+            test <br>-->
+
+        </content>
+        <footer class="footer-fixed" data-color="SidebarBackgroundColor">
+            <span>&copy; 2023 Your Company. All rights reserved.</span>
+        </footer>
+    </main>
+    <configurator>
+        <a class="configurator-button-show">
+            <i class="configurator-icon fa fa-2x fa-gear" aria-hidden="true"></i>
+        </a>
+        <div class="configurator-window" data-color="lightgrey">
+            <a class="configurator-button-close"><i class="configurator-icon fa fa-xmark" aria-hidden="true"></i></a>
+            <label class="d-block">Конфигурация боковой панели</label>
+            <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
+            <label class="d-block">Цветовая схема фона </label>
+            <div class="configurator-widget-color">
+                <span class="configurator-button-color" data-color="lightgrey" onclick="setSidebarBackgroundColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="purple" onclick="setSidebarBackgroundColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="blue" onclick="setSidebarBackgroundColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="green" onclick="setSidebarBackgroundColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="orange" onclick="setSidebarBackgroundColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="red" onclick="setSidebarBackgroundColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="rose" onclick="setSidebarBackgroundColor(this)" aria-hidden="true"></span>
+            </div>
+            <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
+            <label class="d-block">Цветовая схема селектора</label>
+            <div class="configurator-widget-color">
+                <span class="configurator-button-color" data-color="lightgrey" onclick="setSidebarSelectorColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="purple" onclick="setSidebarSelectorColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="blue" onclick="setSidebarSelectorColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="green" onclick="setSidebarSelectorColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="orange" onclick="setSidebarSelectorColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="red" onclick="setSidebarSelectorColor(this)" aria-hidden="true"></span>
+                <span class="configurator-button-color" data-color="rose" onclick="setSidebarSelectorColor(this)" aria-hidden="true"></span>
+            </div>
+            <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
+            <label class="d-block">Фоновые рисунки</label>
+            <div class="configurator-widget-image">
+                <div class="configurator-button-image border" data-image="" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
+                <div class="configurator-button-image" data-image="sidebar-1" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
+                <div class="configurator-button-image" data-image="sidebar-2" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
+                <div class="configurator-button-image" data-image="sidebar-3" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
+                <div class="configurator-button-image" data-image="sidebar-4" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
+                <div class="configurator-button-image" data-image="sidebar-5" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
+                <div class="configurator-button-image" data-image="sidebar-6" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
+                <div class="configurator-button-image" data-image="sidebar-7" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
+            </div>
+        </div>
+    </configurator>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/fontawesome.all.min.js"></script>
+    <script src="assets/js/site.js"></script>
+</body>
+</html>
