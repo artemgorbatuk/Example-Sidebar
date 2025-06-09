@@ -1,0 +1,5 @@
+.app-border {
+    border-style: solid;
+    border-color: var(--SidebarBackgroundColor);
+    border-radius: 10px;
+}

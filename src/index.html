@@ -5,29 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta http-equiv="Access-Control-Allow-Headers" content="X-Requested-With, Content-Type, Accept, Origin">
-    <title>sidebar</title>
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/fontawesome.all.min.css" rel="stylesheet" />
-    <link href="assets/css/colors.css" rel="stylesheet" />
-    <link href="assets/css/site.css" rel="stylesheet" />
-    <link href="assets/css/layout.css" rel="stylesheet" />
-    <link href="assets/css/sidebar.css" rel="stylesheet" />
-    <link href="assets/css/tooltip.css" rel="stylesheet" />
+    <title>project name</title>
+    <link href="assets/external/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/external/css/fontawesome.all.min.css" rel="stylesheet" />
+    <link href="assets/external/css/tooltip.css" rel="stylesheet" />
+    <link href="assets/internal/common/css/layout.css" rel="stylesheet" />
+    <link href="assets/internal/common/css/sidebar.css" rel="stylesheet" />
+    <link href="assets/internal/common/css/configurator.css" rel="stylesheet" />
+    <link href="assets/internal/common/css/colors.css" rel="stylesheet" />
+    <link href="assets/internal/components/css/app-border.css" rel="stylesheet" />
 </head>
 <body>
     <sidebar>
         <div class="sidebar" data-color="SidebarBackgroundColor">
-            <div class="sidebar-header">
-                <div class="navbar-brand d-block">
-                    Sidebar
-                </div>
-            </div>
-            <hr class="horizontal-line my-1" />
-            <div class="sidebar-header">
-                <div class="user-pic" data-image="user_pic" aria-hidden="true"></div>
-                <div class="user-name"> Cat Leopold </div>
-            </div>
-            <hr class="horizontal-line my-1" />
             <div class="sidebar-body">
                 <ul class="nav">
                     <li class="nav-item">
@@ -162,20 +152,20 @@
                     </li>
                 </ul>
             </div>
-            <hr class="horizontal-line my-1" />
-            <div class="sidebar-footer">
-                <a class="sidebar-icon-left m-2 " aria-hidden="true" href="https://www.youtube.com" target="_blank"><i class="fa fa-2x fa-brands fa-youtube"></i></a>
-                <a class="sidebar-icon-left m-2 " aria-hidden="true" href="https://www.facebook.com" target="_blank"><i class="fa fa-2x fa-brands fa-facebook"></i></a>
-                <a class="sidebar-icon-left m-2 " aria-hidden="true" href="https://www.instagram.com" target="_blank"><i class="fa fa-2x fa-brands fa-instagram"></i></a>
-                <a class="sidebar-icon-left m-2 " aria-hidden="true" href="https://ru.linkedin.com" target="_blank"><i class="fa fa-2x fa-brands fa-linkedin"></i></a>
-            </div>
+
             <div class="sidebar-background" data-image="selected"></div>
         </div>
     </sidebar>
     <main>
-        <header data-color="SidebarBackgroundColor">
-            <div>
-                <i class="fa fa-regular fa-bell"></i>
+        <header>
+            <div class="header app-border">
+                <div class="header-left navbar-brand">
+                    Project Name
+                </div>
+                <div class="header-right user-profile">
+                    <div class="user-pic" data-image="user_pic" aria-hidden="true"></div>
+                    <div class="user-name"> Cat Leopold </div>
+                </div>
             </div>
         </header>
         <content>
@@ -197,63 +187,58 @@
                 </ul>
             </ul>
 
-            Источник вдохновения: <a href="https://www.creative-tim.com/product/buy/bundle/html-bundle" target="_blank">content</a>
+            Источник вдохновения:
+            <a href="https://www.creative-tim.com/product/buy/bundle/html-bundle" target="_blank">content</a>
 
-            <!--<br>
-            <br>
             <br>
 
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>
-            test <br>-->
+            <br>
+            <br> test 001
+            <br> test 002
+            <br> test 003
+            <br> test 004
+            <br> test 005
+            <br> test 006
+            <br> test 007
+            <br> test 008
+            <br> test 009
+            <br> test 010
+            <br> test 011
+            <br> test 012
+            <br> test 013
+            <br> test 014
+            <br> test 015
+            <br> test 016
+            <br> test 017
+            <br> test 018
+            <br> test 019
+            <br> test 020
+            <br> test 021
+            <br> test 022
+            <br> test 023
+            <br> test 024
+            <br> test 025
+            <br> test 026
+            <br> test 027
+            <br> test 028
+            <br> test 029
+            <br> test 030
+            <br> test 031
+            <br> test 032
 
         </content>
-        <footer class="footer-fixed" data-color="SidebarBackgroundColor">
-            <span>&copy; 2023 Your Company. All rights reserved.</span>
+        <footer>
+            <div class="footer app-border">
+                <div class="footer-left">
+                    <span>&copy; 2023 Your Company. All rights reserved.</span>
+                </div>
+                <div class="footer-right footer-social">
+                    <a class="m-2" aria-hidden="true" href="https://www.youtube.com" target="_blank"><i class="fa fa-2x fa-brands fa-youtube"></i></a>
+                    <a class="m-2" aria-hidden="true" href="https://www.facebook.com" target="_blank"><i class="fa fa-2x fa-brands fa-facebook"></i></a>
+                    <a class="m-2" aria-hidden="true" href="https://www.instagram.com" target="_blank"><i class="fa fa-2x fa-brands fa-instagram"></i></a>
+                    <a class="m-2" aria-hidden="true" href="https://ru.linkedin.com" target="_blank"><i class="fa fa-2x fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
         </footer>
     </main>
     <configurator>
@@ -263,6 +248,11 @@
         <div class="configurator-window" data-color="lightgrey">
             <a class="configurator-button-close"><i class="configurator-icon fa fa-xmark" aria-hidden="true"></i></a>
             <label class="d-block">Конфигурация боковой панели</label>
+            <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
+            <div class="configurator-control-panel">
+                <label><input type="checkbox" class="toggle toggle-header" onclick="setHeaderState(); setHeaderPosition()"> Прикрепить Header</label>
+                <label><input type="checkbox" class="toggle toggle-footer" onclick="setFooterState(); setFooterPosition()"> Прикрепить Footer</label>
+            </div>
             <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
             <label class="d-block">Цветовая схема фона </label>
             <div class="configurator-widget-color">
@@ -299,9 +289,11 @@
             </div>
         </div>
     </configurator>
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/fontawesome.all.min.js"></script>
-    <script src="assets/js/site.js"></script>
+    <script src="assets/external/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/external/js/bootstrap.js"></script>
+    <script src="assets/external/js/fontawesome.all.min.js"></script>
+    <script src="assets/internal/common/js/layout.js"></script>
+    <script src="assets/internal/common/js/sidebar.js"></script>
+    <script src="assets/internal/common/js/configurator.js"></script>
 </body>
 </html>

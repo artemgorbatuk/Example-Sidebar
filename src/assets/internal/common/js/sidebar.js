@@ -1,10 +1,7 @@
-
 $(document).on('click', '.sidebar-toggle-item', function () {
     var icon = $(this).find(".sidebar-icon-right");
     icon.toggleClass('rotate');
 });
-
-
 
 document.querySelectorAll('.nav-item a').forEach(function (link) {
     link.addEventListener('click', function (event) {
@@ -18,36 +15,19 @@ document.querySelectorAll('.nav-item a').forEach(function (link) {
     });
 });
 
-
-var configuratorWindow = document.querySelector(".configurator-window");
-var configuratorButtonShow = document.querySelector(".configurator-button-show");
-var configuratorButtonClose = document.querySelector(".configurator-button-close");
-
-configuratorButtonShow && (configuratorButtonShow.onclick = function () {
-    configuratorWindow.classList.contains("show")
-        ? configuratorWindow.classList.remove("show")
-        : configuratorWindow.classList.add("show")
+window.addEventListener('beforeunload', function () {
+    const activeLink = document.querySelector('.nav-item > a.active');
+    if (activeLink && activeLink.href) {
+        const fileName = new URL(activeLink.href).pathname.split('/').pop();
+        localStorage.setItem('lastActiveLink', fileName);
+    }
 });
-
-configuratorButtonClose && (configuratorButtonClose.onclick = function () {
-    configuratorWindow.classList.remove("show")
-});
-
 
 document.addEventListener('DOMContentLoaded', function () {
     restoreSidebarActiveLink();
     restoreSidebarBackgroundColor();
     restoreSidebarSelectorColor();
     restoreSidebarBackgroundImage();
-});
-
-
-
-window.addEventListener('beforeunload', function () {
-    const activeLink = document.querySelector('.nav-item > a.active');
-    if (activeLink && activeLink.href) {
-        const fileName = new URL(activeLink.href).pathname.split('/').pop();
-        localStorage.setItem('lastActiveLink', fileName);    }
 });
 
 function restoreSidebarActiveLink() {
@@ -63,30 +43,34 @@ function restoreSidebarActiveLink() {
 function setSidebarBackgroundColor(e) {
     var newColor = e.getAttribute("data-color");
     document.documentElement.style.setProperty('--SidebarBackgroundColor', `var(--${newColor})`);
-    // кэшируем значение
-    localStorage.setItem('SidebarBackgroundColor', `var(--${newColor})`);
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    localStorage.setItem('SidebarBackgroundColor', newColor);
 }
 
 function restoreSidebarBackgroundColor() {
-    // Проверка наличия сохраненного значения
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     if (localStorage.getItem('SidebarBackgroundColor')) {
         var cachedColor = localStorage.getItem('SidebarBackgroundColor');
-        document.documentElement.style.setProperty('--SidebarBackgroundColor', cachedColor);
+        document.documentElement.style.setProperty('--SidebarBackgroundColor', `var(--${cachedColor})`);
     }
 }
 
 function setSidebarSelectorColor(e) {
-    var newColor = e.getAttribute("data-color");
-    document.documentElement.style.setProperty('--SidebarSelectorColor', `var(--${newColor})`);
-    // кэшируем значение
-    localStorage.setItem('SidebarSelectorColor', `var(--${newColor})`);
+    var newSelectorColor = e.getAttribute("data-color");
+    var newFontColor = newSelectorColor === 'lightgrey' ? 'black' : 'lightgrey';
+    document.documentElement.style.setProperty('--SidebarSelectorColor', `var(--${newSelectorColor})`);    
+    document.documentElement.style.setProperty('--SidebarFontColor', `var(--${newFontColor})`);
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    localStorage.setItem('SidebarSelectorColor', newSelectorColor);
 }
 
 function restoreSidebarSelectorColor() {
-    // Проверка наличия сохраненного значения
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     if (localStorage.getItem('SidebarSelectorColor')) {
-        var cachedColor = localStorage.getItem('SidebarSelectorColor');
-        document.documentElement.style.setProperty('--SidebarSelectorColor', cachedColor);
+        var cachedSelectorColor = localStorage.getItem('SidebarSelectorColor');
+        var fontColor = cachedSelectorColor === 'lightgrey' ? 'black' : 'lightgrey';
+        document.documentElement.style.setProperty('--SidebarSelectorColor', `var(--${cachedSelectorColor})`);
+        document.documentElement.style.setProperty('--SidebarFontColor', `var(--${fontColor})`);
     }
 }
 
@@ -97,25 +81,25 @@ function setSidebarBackgroundImage(e) {
 
     switch (newImage) {
         case 'sidebar-1':
-            imagePath = '../../assets/img/sidebar-1.jpg';
+            imagePath = '../../img/sidebar-1.jpg';
             break;
         case 'sidebar-2':
-            imagePath = '../../assets/img/sidebar-2.jpg';
+            imagePath = '../../img/sidebar-2.jpg';
             break;
         case 'sidebar-3':
-            imagePath = '../../assets/img/sidebar-3.jpg';
+            imagePath = '../../img/sidebar-3.jpg';
             break;
         case 'sidebar-4':
-            imagePath = '../../assets/img/sidebar-4.jpg';
+            imagePath = '../../img/sidebar-4.jpg';
             break;
         case 'sidebar-5':
-            imagePath = '../../assets/img/sidebar-5.jpg';
+            imagePath = '../../img/sidebar-5.jpg';
             break;
         case 'sidebar-6':
-            imagePath = '../../assets/img/sidebar-6.jpg';
+            imagePath = '../../img/sidebar-6.jpg';
             break;
         case 'sidebar-7':
-            imagePath = '../../assets/img/sidebar-7.jpg';
+            imagePath = '../../img/sidebar-7.jpg';
             break;
         default:
             imagePath = '';
@@ -124,30 +108,14 @@ function setSidebarBackgroundImage(e) {
 
     document.documentElement.style.setProperty('--SidebarBackgroundImage', `url(${imagePath})`);
 
-    // кэшируем значение
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     localStorage.setItem('SidebarBackgroundImage', `url(${imagePath})`);
 }
 
 function restoreSidebarBackgroundImage() {
-    // Проверка наличия сохраненного значения
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     if (localStorage.getItem('SidebarBackgroundImage')) {
         var cachedImage = localStorage.getItem('SidebarBackgroundImage');
         document.documentElement.style.setProperty('--SidebarBackgroundImage', cachedImage);
-    }
-}
-
-$(document).ready(function () {
-    checkFooterPosition();
-    $(window).resize(checkFooterPosition);
-});
-
-function checkFooterPosition() {
-    var contentHeight = $('.content').height();
-    var windowHeight = $(window).height();
-
-    if (contentHeight < windowHeight) {
-        $('.footer').addClass('fixed');
-    } else {
-        $('.footer').removeClass('fixed');
     }
 }
