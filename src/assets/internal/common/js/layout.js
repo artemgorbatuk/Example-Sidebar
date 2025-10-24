@@ -1,6 +1,5 @@
 const main = document.querySelector('main');
-const toggleheader = $('.toggle-header');
-const togglefooter = $('.toggle-footer');
+let toggleheader, togglefooter;
 const scrollbarWidth = getScrollbarWidth();
 
 function getScrollbarWidth() {
@@ -28,6 +27,25 @@ function getScrollbarWidth() {
 window.addEventListener('resize', setFooterPosition);
 
 document.addEventListener('DOMContentLoaded', function () {  
+    // Инициализируем переключатели после загрузки DOM
+    toggleheader = $('.toggle-header');
+    togglefooter = $('.toggle-footer');
+    
+    // Добавляем обработчики событий
+    if (toggleheader && toggleheader.length > 0) {
+        toggleheader.on('change', function() {
+            setHeaderState();
+            setHeaderPosition();
+        });
+    }
+    
+    if (togglefooter && togglefooter.length > 0) {
+        togglefooter.on('change', function() {
+            setFooterState();
+            setFooterPosition();
+        });
+    }
+    
     restoreHeaderState();
     setHeaderPosition();
     restoreFooterState();
@@ -78,7 +96,7 @@ function setFooterPosition() {
 
     if (footerState) {
         // ����� ������� ����� 2rem ������ ��� main ����� padding 1rem ������ � �����
-        $('footer').css({ position: 'fixed', bottom: '0', width: 'calc(100% - 250px - ' + scrollbarWidth + ' - 2rem)' });
+        $('footer').css({ position: 'fixed' });
         $('.footer-right').css('padding-right', '80px');
         $('content').css('margin-bottom', footerHeight + 'px');       
     } else {
@@ -88,10 +106,6 @@ function setFooterPosition() {
     }
 }
 
-toggleheader.on('change', function() {
-    setHeaderState();
-    setHeaderPosition();
-});
 
 function setHeaderState() {
     var headerState = toggleheader.is(':checked');
@@ -108,17 +122,23 @@ function restoreHeaderState() {
 }
 
 function setHeaderPosition() {
+    console.log('setHeaderPosition called');
+    if (!toggleheader || toggleheader.length === 0) {
+        console.error('toggleheader not found');
+        return;
+    }
+    
     const headerState = toggleheader.is(':checked');
+    console.log('Header state:', headerState);
     
     if (headerState) {
+        console.log('Setting header to fixed');
         $('header').css({ 
-            position: 'fixed', 
-            top: '0', 
-            width: 'calc(100% - 250px - ' + scrollbarWidth + ' - 2rem)',
-            zIndex: '1000'
+            position: 'fixed'
         });
         $('content').css('margin-top', $('header').outerHeight(true) + 'px');
     } else {
+        console.log('Setting header to static');
         $('header').css({ 
             position: 'static', 
             top: '', 

@@ -1,6 +1,8 @@
-$(document).on('click', '.sidebar-toggle-item', function () {
-    var icon = $(this).find(".sidebar-icon-right");
-    icon.toggleClass('rotate');
+document.addEventListener('DOMContentLoaded', function() {
+    $(document).on('click', '.sidebar-toggle-item', function () {
+        var icon = $(this).find(".sidebar-icon-right");
+        icon.toggleClass('rotate');
+    });
 });
 
 document.querySelectorAll('.nav-item a').forEach(function (link) {
@@ -119,3 +121,18 @@ function restoreSidebarBackgroundImage() {
         document.documentElement.style.setProperty('--SidebarBackgroundImage', cachedImage);
     }
 }
+
+// ===== ФУНКЦИИ ДЛЯ ДИНАМИЧЕСКИХ ЛИНИЙ =====
+
+/**
+ * Обновляет горизонтальные линии в конфигураторе
+ */
+function updateConfiguratorLines() {
+    const lines = document.querySelectorAll('.configurator-window .horizontal-line[data-color="SidebarBackgroundColor"]');
+    lines.forEach(line => {
+        // Принудительно обновляем стиль
+        line.style.backgroundColor = `var(--SidebarBackgroundColor)`;
+        line.style.opacity = '0.3';
+    });
+}
+

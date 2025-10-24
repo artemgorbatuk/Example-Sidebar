@@ -1,9 +1,12 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 14px;
     height: 100%;
     margin: 0;
     line-height: 1.15 !important;
-    overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -17,37 +20,64 @@ body {
     width: 100%;
     margin: 0;
     line-height: 1.15 !important;
+    display: grid;
+    grid-template-columns: var(--SidebarWidth) 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar main"
+        "sidebar footer";
     overflow: hidden;
 }
 
 main {
-    display: block;
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    height: 100vh;
     margin: 0;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
+    background-color: var(--background-secondary);
+    min-height: 0; /* Важно для Grid */
 }
 
 header {
+    grid-area: header;
     z-index: 100;
     display: block;
     width: 100%;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px var(--shadow-medium);
     box-sizing: border-box;
     user-select: none;
-    background-color: #ffffff;
+    background-color: var(--background-primary);
+    transition: none; /* Убираем анимацию для сохранения позиции */
+}
+
+/* Fixed header выходит из Grid */
+header[style*="position: fixed"] {
+    grid-area: unset;
+    position: fixed !important;
+    top: 0 !important;
+    left: calc(var(--SidebarWidth) + 1rem) !important;
+    right: 2rem !important;
+    width: auto !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    z-index: 1000 !important;
+    transition: none !important; /* Убираем анимацию для сохранения позиции */
 }
 
     header .header {
         display: flex;
         padding: 10px 20px;
+        color: var(--text-primary);
     }
 
         header .header .header-left {
@@ -71,6 +101,8 @@ header {
             padding: 0;
             justify-content: flex-start;
             align-items: center;
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         header .header .header a.navbar-brand {
@@ -97,31 +129,52 @@ header {
             header .header .user-profile .user-name {
                 display: inline-block;
                 margin-left: 0.5rem;
+                color: var(--text-primary);
+                font-weight: 500;
             }
 
 content {
     display: block;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 1rem;
     flex-grow: 1;
+    color: var(--text-primary);
+    background-color: var(--background-primary);
+    border-radius: 10px;
 }
 
 footer {
+    grid-area: footer;
     z-index: 100;
     display: block;
     width: 100%;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px var(--shadow-medium);
     box-sizing: border-box;
     user-select: none;
-    background-color: #ffffff;
+    background-color: var(--background-primary);
+    transition: none; /* Убираем анимацию для сохранения позиции */
+}
+
+/* Fixed footer выходит из Grid */
+footer[style*="position: fixed"] {
+    grid-area: unset;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: calc(var(--SidebarWidth) + 1rem) !important;
+    right: 2rem !important;
+    width: auto !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    z-index: 1000 !important;
+    transition: none !important; /* Убираем анимацию для сохранения позиции */
 }
 
     footer .footer {
         display: flex;
         padding: 10px 20px;
+        color: var(--text-primary);
     }
 
         footer .footer .footer-left {
@@ -130,6 +183,7 @@ footer {
             flex-wrap: nowrap;
             justify-content: flex-start;
             align-items: center;
+            color: var(--text-secondary);
         }
 
         footer .footer .footer-right {
@@ -144,5 +198,10 @@ footer {
             footer .footer .footer-social > * {
                 display: flex;
                 align-items: center;
-                color: var(--black);
+                color: var(--text-secondary);
+                transition: color 0.2s ease;
+            }
+            
+            footer .footer .footer-social > *:hover {
+                color: var(--primary-500);
             }

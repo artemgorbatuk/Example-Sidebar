@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
-    <meta http-equiv="Access-Control-Allow-Headers" content="X-Requested-With, Content-Type, Accept, Origin">
-    <title>project name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Interactive sidebar configurator with color, background image and positioning settings" />
+    <meta name="keywords" content="sidebar, configurator, settings, interface, navigation panel" />
+    <title>Example Sidebar - Navigation Panel Configurator</title>
     <link href="assets/external/css/bootstrap.css" rel="stylesheet">
     <link href="assets/external/css/fontawesome.all.min.css" rel="stylesheet" />
     <link href="assets/external/css/tooltip.css" rel="stylesheet" />
@@ -16,7 +16,7 @@
     <link href="assets/internal/components/css/app-border.css" rel="stylesheet" />
 </head>
 <body>
-    <sidebar>
+    <sidebar role="navigation" aria-label="Main navigation">
         <div class="sidebar" data-color="SidebarBackgroundColor">
             <div class="sidebar-body">
                 <ul class="nav">
@@ -27,8 +27,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="sidebar-toggle-item collapsed" data-bs-toggle="collapse" aria-expanded="false" href="#security" role="button" aria-controls="security">
-                            <div class="sidebar-icon-left fa fa-lg fa-lock" aria-hidden="false"></div>
+                        <a class="sidebar-toggle-item collapsed" data-bs-toggle="collapse" aria-expanded="false" href="#security" role="button" aria-controls="security" aria-label="Expand Security menu">
+                            <div class="sidebar-icon-left fa fa-lg fa-lock" aria-hidden="true"></div>
                             <div class="sidebar-text-middle flex-fill">Security</div>
                             <div class="sidebar-icon-right ml-auto fa fa-chevron-right" aria-hidden="true"></div>
                         </a>
@@ -62,8 +62,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="sidebar-toggle-item collapsed" data-bs-toggle="collapse" aria-expanded="false" href="#humanresources" role="button" aria-controls="humanresources">
-                            <div class="sidebar-icon-left fa fa-lg fa-people-group" aria-hidden="false"></div>
+                        <a class="sidebar-toggle-item collapsed" data-bs-toggle="collapse" aria-expanded="false" href="#humanresources" role="button" aria-controls="humanresources" aria-label="Expand Human resources menu">
+                            <div class="sidebar-icon-left fa fa-lg fa-people-group" aria-hidden="true"></div>
                             <div class="sidebar-text-middle flex-fill">Human resources</div>
                             <div class="sidebar-icon-right ml-auto fa fa-chevron-right" aria-hidden="true"></div>
                         </a>
@@ -242,16 +242,25 @@
         </footer>
     </main>
     <configurator>
-        <a class="configurator-button-show">
+        <a class="configurator-button-show" aria-label="Open configuration panel">
             <i class="configurator-icon fa fa-2x fa-gear" aria-hidden="true"></i>
         </a>
-        <div class="configurator-window" data-color="lightgrey">
-            <a class="configurator-button-close"><i class="configurator-icon fa fa-xmark" aria-hidden="true"></i></a>
-            <label class="d-block">Конфигурация боковой панели</label>
+        <div class="configurator-window">
+            <div class="configurator-header">
+                <label class="configurator-title">Конфигурация боковой панели</label>
+                <a class="configurator-button-close" aria-label="Close configuration panel"><i class="configurator-icon fa fa-xmark" aria-hidden="true"></i></a>
+            </div>
             <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
             <div class="configurator-control-panel">
                 <label><input type="checkbox" class="toggle toggle-header" onclick="setHeaderState(); setHeaderPosition()"> Прикрепить Header</label>
                 <label><input type="checkbox" class="toggle toggle-footer" onclick="setFooterState(); setFooterPosition()"> Прикрепить Footer</label>
+            </div>
+            <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
+            <label class="d-block">Тема оформления</label>
+            <div class="configurator-control-panel">
+                <label><input type="radio" name="theme" value="light" class="toggle" onchange="setTheme('light')" checked> Светлая тема</label>
+                <label><input type="radio" name="theme" value="dark" class="toggle" onchange="setTheme('dark')"> Темная тема</label>
+                <label><input type="radio" name="theme" value="auto" class="toggle" onchange="setTheme('auto')"> Автоматически</label>
             </div>
             <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
             <label class="d-block">Цветовая схема фона </label>

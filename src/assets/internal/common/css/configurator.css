@@ -8,12 +8,12 @@ configurator {
         right: 3.3rem;
         width: 55px;
         height: 55px;
-        background: transparent;
-        color: #000;
-        border: none;
+        background: var(--background-primary);
+        color: var(--text-primary);
+        border: 2px solid var(--border-light);
         border-radius: 50%;
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .16);
-        z-index: 900;
+        box-shadow: 0 2px 12px 0 var(--shadow-medium);
+        z-index: 1000;
         cursor: pointer;
     }
 
@@ -25,7 +25,7 @@ configurator {
             transform: translate(-50%, -50%);
         }
 
-    configurator > .configurator-window {
+        configurator > .configurator-window {
         position: fixed !important;
         top: 0;
         height: 100%;
@@ -34,30 +34,50 @@ configurator {
         width: 360px;
         padding: 20px;
         border-radius: 0;
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .16);
-        color: #000;
-        background-color: #fff;
+        box-shadow: 0 2px 12px 0 var(--shadow-dark);
+        color: var(--text-primary) !important;
+        background-color: var(--background-primary) !important;
         transition: 0.7s ease;
         transform: unset !important;
-        z-index: 1000;
+        z-index: 1100;
     }
 
         configurator > .configurator-window.show {
             right: 0px;
         }
 
-        configurator > .configurator-window > .configurator-button-close {
-            position: absolute;
-            right: 20px;
+        /* Заголовок конфигуратора */
+        .configurator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .configurator-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+            flex: 1;
+        }
+        
+        .configurator-button-close {
             border: none;
-            color: #000;
+            color: var(--text-primary);
             cursor: pointer;
+            padding: 5px;
+            border-radius: 3px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .configurator-button-close:hover {
+            background-color: var(--background-secondary);
         }
 
-            configurator > .configurator-window > .configurator-button-close > .configurator-icon {
-                pointer-events: none;
-                font-size: 1.3rem;
-            }
+        .configurator-button-close > .configurator-icon {
+            pointer-events: none;
+            font-size: 1.3rem;
+        }
 
 
 .configurator-widget-color {
@@ -69,10 +89,16 @@ configurator {
         display: inline-block;
         height: 25px;
         width: 25px;
-        border: 2px solid #ffffff;
+        border: 2px solid var(--border-light);
         border-radius: 50%;
         transition: all .2s ease-in-out;
         cursor: pointer;
+        margin: 2px;
+    }
+    
+    .configurator-widget-color > .configurator-button-color:hover {
+        border-color: var(--primary-500);
+        transform: scale(1.1);
     }
 
 
@@ -91,5 +117,93 @@ configurator {
     }
 
         .configurator-widget-image > .configurator-button-image:hover {
-            border: 3px solid #fff;
+            border: 3px solid var(--primary-500);
+            transform: scale(1.05);
         }
+}
+
+/* ===== СТИЛИ ДЛЯ ПЕРЕКЛЮЧАТЕЛЯ ТЕМЫ ===== */
+.configurator-control-panel label {
+    display: block;
+    margin: 5px 0;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.configurator-control-panel label:hover {
+    background-color: var(--background-secondary);
+}
+
+.configurator-control-panel input[type="radio"] {
+    margin-right: 8px;
+    accent-color: var(--primary-500);
+}
+
+.configurator-control-panel input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--primary-500);
+}
+
+/* ===== СТИЛИ ДЛЯ ЛЕЙБЛОВ И РАЗДЕЛИТЕЛЕЙ ===== */
+.configurator-window label.d-block {
+    display: block;
+    margin: 10px 0 5px 0;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.configurator-window .horizontal-line {
+    border: none;
+    height: 1px;
+    background-color: var(--border-light);
+    margin: 15px 0;
+}
+
+/* Динамические горизонтальные линии, использующие цвет фона sidebar */
+.configurator-window .horizontal-line[data-color="SidebarBackgroundColor"] {
+    background-color: var(--SidebarBackgroundColor);
+    opacity: 0.3;
+}
+
+.configurator-window .horizontal-line.my-2 {
+    margin: 10px 0;
+}
+
+/* ===== МОБИЛЬНЫЕ СТИЛИ ДЛЯ КОНФИГУРАТОРА ===== */
+@media (max-width: 768px) {
+    .configurator-window {
+        width: 100vw !important;
+        max-width: 320px !important;
+        right: -100vw !important;
+        padding: 15px !important;
+    }
+    
+    .configurator-window.show {
+        right: 0 !important;
+    }
+    
+    .configurator-widget-color > .configurator-button-color {
+        height: 30px;
+        width: 30px;
+        margin: 2px;
+    }
+    
+    .configurator-widget-image > .configurator-button-image {
+        height: 120px;
+        width: 60px;
+        margin: 2px;
+    }
+    
+    .configurator-window label.d-block {
+        font-size: 0.9rem;
+    }
+    
+    .configurator-window .configurator-control-panel label {
+        font-size: 0.85rem;
+    }
+}

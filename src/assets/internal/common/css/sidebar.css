@@ -1,31 +1,36 @@
 :root {
-    --SidebarBackgroundColor: #ffffff;
-    --SidebarSelectorColor: #ffffff;
-    --SidebarFontColor: #ffffff;
+    --SidebarBackgroundColor: var(--background-primary);
+    --SidebarSelectorColor: var(--primary-500);
+    --SidebarFontColor: var(--text-primary);
     --SidebarBackgroundImage: none;
     --SidebarWidth: 250px;
 }
 
 sidebar {
-    display: block;
-    float: left;
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     width: var(--SidebarWidth);
     margin: 0;
     padding: 0;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: var(--lightgrey);
+    box-shadow: 0 0.5rem 1rem var(--shadow-medium);
+    background-color: var(--SidebarBackgroundColor);
     user-select: none;
+    z-index: 5;
+    overflow: hidden;
 }
 
     sidebar > .sidebar {
         z-index: 1;
         position: relative;
-        display: block;
+        display: flex;
+        flex-direction: column;
         height: 100%;
         width: 100%;
         margin: 0;
         padding: 0;
+        overflow: hidden;
     }
 
         sidebar > .sidebar > .sidebar-background {
@@ -42,13 +47,14 @@ sidebar {
         }
 
         sidebar > .sidebar > .sidebar-body {
-            display: block;
-            min-height: 100vh;
-            max-height: 100vh;
-            margin: 0rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin: 0;
             padding: 1rem;
-            overflow-y: scroll;
+            overflow-y: auto;
             overflow-x: hidden;
+            min-height: 0; /* Важно для Flexbox */
         }
 
 
@@ -95,7 +101,7 @@ sidebar {
                         border-radius: 4px;
                         align-items: center;
                         text-decoration: none;
-                        color: var(--black);
+                        color: var(--text-primary);
                     }
 
                         sidebar > .sidebar > .sidebar-body .nav > .nav-item > a:hover,
