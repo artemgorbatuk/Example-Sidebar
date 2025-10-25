@@ -292,9 +292,166 @@ const setFooterPosition = () => {
     }
 };
 
+/**
+ * Экспортирует все настройки в JSON
+ * @returns {Object} Объект с настройками
+ */
+const exportSettings = () => {
+    try {
+        const settings = {
+            layout: {
+                headerState: localStorage.getItem('HeaderState'),
+                footerState: localStorage.getItem('FooterState')
+            },
+            sidebar: {
+                backgroundColor: localStorage.getItem('SidebarBackgroundColor'),
+                selectorColor: localStorage.getItem('SidebarSelectorColor'),
+                backgroundImage: localStorage.getItem('SidebarBackgroundImage')
+            },
+            configurator: {
+                theme: localStorage.getItem('selectedTheme')
+            },
+            metadata: {
+                exportDate: new Date().toISOString(),
+                version: '1.0.0'
+            }
+        };
+        
+        return settings;
+    } catch (error) {
+        console.error('Ошибка при экспорте настроек:', error);
+        return null;
+    }
+};
+
+/**
+ * Импортирует настройки из JSON
+ * @param {Object} settings - Объект с настройками
+ */
+const importSettings = (settings) => {
+    try {
+        if (!settings || typeof settings !== 'object') {
+            throw new Error('Некорректный формат настроек');
+        }
+
+        // Импортируем настройки layout
+        if (settings.layout) {
+            if (settings.layout.headerState) {
+                localStorage.setItem('HeaderState', settings.layout.headerState);
+                if (toggleHeader) {
+                    toggleHeader.checked = settings.layout.headerState === 'true';
+                    setHeaderState();
+                    setHeaderPosition();
+                }
+            }
+            
+            if (settings.layout.footerState) {
+                localStorage.setItem('FooterState', settings.layout.footerState);
+                if (toggleFooter) {
+                    toggleFooter.checked = settings.layout.footerState === 'true';
+                    setFooterState();
+                    setFooterPosition();
+                }
+            }
+        }
+
+        // Импортируем настройки sidebar
+        if (settings.sidebar) {
+            if (settings.sidebar.backgroundColor) {
+                localStorage.setItem('SidebarBackgroundColor', settings.sidebar.backgroundColor);
+                document.documentElement.style.setProperty('--SidebarBackgroundColor', `var(--${settings.sidebar.backgroundColor})`);
+            }
+            
+            if (settings.sidebar.selectorColor) {
+                localStorage.setItem('SidebarSelectorColor', settings.sidebar.selectorColor);
+                const fontColor = settings.sidebar.selectorColor === 'lightgrey' ? 'black' : 'lightgrey';
+                document.documentElement.style.setProperty('--SidebarSelectorColor', `var(--${settings.sidebar.selectorColor})`);
+                document.documentElement.style.setProperty('--SidebarFontColor', `var(--${fontColor})`);
+            }
+            
+            if (settings.sidebar.backgroundImage) {
+                localStorage.setItem('SidebarBackgroundImage', settings.sidebar.backgroundImage);
+                document.documentElement.style.setProperty('--SidebarBackgroundImage', settings.sidebar.backgroundImage);
+            }
+        }
+
+        // Импортируем настройки конфигуратора
+        if (settings.configurator && settings.configurator.theme) {
+            localStorage.setItem('selectedTheme', settings.configurator.theme);
+            if (window.setTheme) {
+                window.setTheme(settings.configurator.theme);
+            }
+        }
+
+        // Обновляем конфигуратор
+        if (window.updateConfiguratorLines) {
+            window.updateConfiguratorLines();
+        }
+
+        return true;
+    } catch (error) {
+        console.error('Ошибка при импорте настроек:', error);
+        return false;
+    }
+};
+
+/**
+ * Скачивает настройки как JSON файл
+ */
+const downloadSettings = () => {
+    try {
+        const settings = exportSettings();
+        if (!settings) return;
+
+        const dataStr = JSON.stringify(settings, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(dataBlob);
+        link.download = `sidebar-settings-${new Date().toISOString().split('T')[0]}.json`;
+        link.click();
+        
+        URL.revokeObjectURL(link.href);
+    } catch (error) {
+        console.error('Ошибка при скачивании настроек:', error);
+    }
+};
+
+/**
+ * Загружает настройки из файла
+ * @param {File} file - Файл с настройками
+ */
+const uploadSettings = (file) => {
+    try {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const settings = JSON.parse(e.target.result);
+                const success = importSettings(settings);
+                
+                if (success) {
+                    alert('Настройки успешно импортированы!');
+                } else {
+                    alert('Ошибка при импорте настроек. Проверьте формат файла.');
+                }
+            } catch (error) {
+                console.error('Ошибка при чтении файла:', error);
+                alert('Ошибка при чтении файла. Проверьте формат JSON.');
+            }
+        };
+        reader.readAsText(file);
+    } catch (error) {
+        console.error('Ошибка при загрузке файла:', error);
+    }
+};
+
 window.setHeaderState = setHeaderState;
 window.setHeaderPosition = setHeaderPosition;
 window.setFooterState = setFooterState;
 window.setFooterPosition = setFooterPosition;
 window.restoreHeaderState = restoreHeaderState;
 window.restoreFooterState = restoreFooterState;
+window.exportSettings = exportSettings;
+window.importSettings = importSettings;
+window.downloadSettings = downloadSettings;
+window.uploadSettings = uploadSettings;

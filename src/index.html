@@ -296,6 +296,17 @@
                 <div class="configurator-button-image" data-image="sidebar-6" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
                 <div class="configurator-button-image" data-image="sidebar-7" onclick="setSidebarBackgroundImage(this)" aria-hidden="true"></div>
             </div>
+            <hr class="horizontal-line my-2" data-color="SidebarBackgroundColor" />
+            <label class="d-block">Экспорт/Импорт настроек</label>
+            <div class="configurator-control-panel">
+                <button class="btn btn-primary btn-sm me-2" onclick="downloadSettings()" title="Скачать настройки">
+                    <i class="fa fa-download" aria-hidden="true"></i> Экспорт
+                </button>
+                <label class="btn btn-secondary btn-sm" title="Загрузить настройки">
+                    <i class="fa fa-upload" aria-hidden="true"></i> Импорт
+                    <input type="file" accept=".json" onchange="uploadSettings(this.files[0])" style="display: none;">
+                </label>
+            </div>
         </div>
     </configurator>
     <script src="assets/external/js/jquery-3.7.1.min.js"></script>
