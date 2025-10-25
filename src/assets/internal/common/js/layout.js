@@ -187,35 +187,11 @@ const restoreHeaderState = () => {
 
 /**
  * Устанавливает позицию header
+ * Теперь просто вызывает setHeaderState() для избежания дублирования кода
  */
 const setHeaderPosition = () => {
     try {
-        if (!toggleHeader) return;
-        
-        const headerState = toggleHeader.checked;
-        
-        if (headerState) {
-            const header = document.querySelector('header');
-            if (header) {
-                header.style.position = 'fixed';
-                const content = document.querySelector('content');
-                if (content) {
-                    content.style.marginTop = `${getFullElementHeight(header)}px`;
-                }
-            }
-        } else {
-            const header = document.querySelector('header');
-            if (header) {
-                header.style.position = 'static';
-                header.style.top = '';
-                header.style.width = '100%';
-                header.style.zIndex = '100';
-            }
-            const content = document.querySelector('content');
-            if (content) {
-                content.style.marginTop = '';
-            }
-        }
+        setHeaderState();
     } catch (error) {
         console.error('Ошибка при установке позиции header:', error);
     }
@@ -284,42 +260,11 @@ const restoreFooterState = () => {
 
 /**
  * Устанавливает позицию footer
+ * Теперь просто вызывает setFooterState() для избежания дублирования кода
  */
 const setFooterPosition = () => {
     try {
-        if (!toggleFooter) return;
-        
-        const footerState = toggleFooter.checked;
-        
-        if (footerState) {
-            const footer = document.querySelector('footer');
-            if (footer) {
-                footer.style.position = 'fixed';
-                const footerRight = document.querySelector('.footer-right');
-                if (footerRight) {
-                    footerRight.style.paddingRight = '65px';
-                }
-                const content = document.querySelector('content');
-                if (content) {
-                    content.style.marginBottom = `${getFullElementHeight(footer)}px`;
-                }
-            }
-    } else {
-            const footer = document.querySelector('footer');
-            if (footer) {
-                footer.style.position = 'static';
-                footer.style.bottom = '';
-                footer.style.width = '100%';
-            }
-            const footerRight = document.querySelector('.footer-right');
-            if (footerRight) {
-                footerRight.style.paddingRight = '';
-            }
-            const content = document.querySelector('content');
-            if (content) {
-                content.style.marginBottom = '';
-            }
-        }
+        setFooterState();
     } catch (error) {
         console.error('Ошибка при установке позиции footer:', error);
     }
