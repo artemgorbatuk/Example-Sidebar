@@ -50,6 +50,24 @@ const getScrollbarWidth = () => {
 const scrollbarWidth = getScrollbarWidth();
 
 /**
+ * Debounce функция для оптимизации производительности
+ * @param {Function} func - Функция для выполнения
+ * @param {number} wait - Задержка в миллисекундах
+ * @returns {Function} Debounced функция
+ */
+const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
+
+/**
  * Обработчик изменения размера окна
  */
 const handleResize = () => {
@@ -60,7 +78,9 @@ const handleResize = () => {
     }
 };
 
-window.addEventListener('resize', handleResize);
+// Применяем debounce с задержкой 250ms для resize событий
+const debouncedHandleResize = debounce(handleResize, 250);
+window.addEventListener('resize', debouncedHandleResize);
 
 /**
  * Обработчик скролла для main элемента
