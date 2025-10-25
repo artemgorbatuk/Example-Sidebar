@@ -144,7 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const mainElement = document.querySelector('main');
         if (mainElement) {
-            mainElement.addEventListener('scroll', handleMainScroll);
+            // Применяем debounce с задержкой 100ms для scroll событий
+            const debouncedHandleMainScroll = debounce(handleMainScroll, 100);
+            mainElement.addEventListener('scroll', debouncedHandleMainScroll);
         }
     } catch (error) {
         console.error('Ошибка при инициализации layout:', error);
