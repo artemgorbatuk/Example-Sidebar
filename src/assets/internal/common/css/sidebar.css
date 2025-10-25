@@ -8,8 +8,7 @@
 
 sidebar {
     grid-area: sidebar;
-    display: flex;
-    flex-direction: column;
+    display: block;
     height: 100vh;
     width: var(--SidebarWidth);
     margin: 0;
@@ -18,19 +17,16 @@ sidebar {
     background-color: var(--SidebarBackgroundColor);
     user-select: none;
     z-index: 5;
-    overflow: hidden;
 }
 
     sidebar > .sidebar {
         z-index: 1;
         position: relative;
-        display: flex;
-        flex-direction: column;
+        display: block;
         height: 100%;
         width: 100%;
         margin: 0;
         padding: 0;
-        overflow: hidden;
     }
 
         sidebar > .sidebar > .sidebar-background {
@@ -47,16 +43,14 @@ sidebar {
         }
 
         sidebar > .sidebar > .sidebar-body {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            margin: 0;
+            display: block;
+            min-height: 100vh;
+            max-height: 100vh;
+            margin: 0rem;
             padding: 1rem;
-            overflow-y: auto;
+            overflow-y: scroll;
             overflow-x: hidden;
-            min-height: 0; /* Важно для Flexbox */
         }
-
 
             sidebar > .sidebar > .sidebar-body::-webkit-scrollbar {
                 width: 8px;
@@ -67,11 +61,8 @@ sidebar {
             }
 
             sidebar > .sidebar > .sidebar-body::-webkit-scrollbar-thumb {
-                /*background-color: var(--SidebarBackgroundColor);*/
-                /*background: linear-gradient(45deg, #EECFBA, #C5DDE8);*/
                 background: linear-gradient(45deg, var(--SidebarBackgroundColor), var(--SidebarSelectorColor));
                 border-radius: 20px;
-                /*border: 1px solid #050c26*/
             }
 
             sidebar > .sidebar > .sidebar-body .nav {
@@ -113,7 +104,6 @@ sidebar {
                         }
 
                         sidebar > .sidebar > .sidebar-body .nav > .nav-item > a > .sidebar-toggle-item {
-                            /*�� �������� transition*/
                             transition: all 5s linear;
                         }
 
@@ -131,7 +121,7 @@ sidebar {
                             margin: 0;
                             padding: 0;
                             white-space: nowrap;
-                            overflow: hidden;
+                            overflow: visible;
                             text-overflow: ellipsis;
                         }
 
@@ -153,9 +143,6 @@ sidebar {
                                 transform: rotate(90deg);
                             }
 
-                            /*sidebar > .sidebar > .sidebar-body .nav > .nav-item > a > .sidebar-icon-right[data-view="mini"] {
-                                display: none;
-                            }*/
 
 
 [data-image="selected"] {

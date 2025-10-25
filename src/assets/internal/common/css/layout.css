@@ -42,7 +42,7 @@ main {
     overflow-y: auto;
     overflow-x: hidden;
     background-color: var(--background-secondary);
-    min-height: 0; /* Важно для Grid */
+    min-height: 0;
 }
 
 header {
@@ -57,10 +57,9 @@ header {
     box-sizing: border-box;
     user-select: none;
     background-color: var(--background-primary);
-    transition: none; /* Убираем анимацию для сохранения позиции */
+    transition: none;
 }
 
-/* Fixed header выходит из Grid */
 header[style*="position: fixed"] {
     grid-area: unset;
     position: fixed !important;
@@ -71,7 +70,7 @@ header[style*="position: fixed"] {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
     z-index: 1000 !important;
-    transition: none !important; /* Убираем анимацию для сохранения позиции */
+    transition: none !important;
 }
 
     header .header {
@@ -154,10 +153,9 @@ footer {
     box-sizing: border-box;
     user-select: none;
     background-color: var(--background-primary);
-    transition: none; /* Убираем анимацию для сохранения позиции */
+    transition: none;
 }
 
-/* Fixed footer выходит из Grid */
 footer[style*="position: fixed"] {
     grid-area: unset;
     position: fixed !important;
@@ -168,7 +166,7 @@ footer[style*="position: fixed"] {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
     z-index: 1000 !important;
-    transition: none !important; /* Убираем анимацию для сохранения позиции */
+    transition: none !important;
 }
 
     footer .footer {

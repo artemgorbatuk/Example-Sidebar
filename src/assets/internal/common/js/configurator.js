@@ -1,71 +1,121 @@
-var configuratorWindow = document.querySelector(".configurator-window");
-var configuratorButtonShow = document.querySelector(".configurator-button-show");
-var configuratorButtonClose = document.querySelector(".configurator-button-close");
+/**
+ * Модуль управления конфигуратором
+ * @module ConfiguratorManager
+ */
 
-configuratorButtonShow && (configuratorButtonShow.onclick = function () {
-    configuratorWindow.classList.contains("show")
-        ? configuratorWindow.classList.remove("show")
-        : configuratorWindow.classList.add("show")
-});
+let configuratorWindow, configuratorButtonShow, configuratorButtonClose;
 
-configuratorButtonClose && (configuratorButtonClose.onclick = function () {
-    configuratorWindow.classList.remove("show")
-});
+/**
+ * Инициализация конфигуратора
+ */
+const initConfigurator = () => {
+    try {
+        configuratorWindow = document.querySelector('.configurator-window');
+        configuratorButtonShow = document.querySelector('.configurator-button-show');
+        configuratorButtonClose = document.querySelector('.configurator-button-close');
 
-// ===== ФУНКЦИИ ДЛЯ УПРАВЛЕНИЯ ТЕМОЙ =====
+        if (configuratorButtonShow) {
+            configuratorButtonShow.addEventListener('click', toggleConfigurator);
+        }
+
+        if (configuratorButtonClose) {
+            configuratorButtonClose.addEventListener('click', closeConfigurator);
+        }
+
+        loadTheme();
+        
+        if (window.updateConfiguratorLines) {
+            window.updateConfiguratorLines();
+        }
+    } catch (error) {
+        console.error('Ошибка при инициализации конфигуратора:', error);
+    }
+};
+
+/**
+ * Переключает видимость конфигуратора
+ */
+const toggleConfigurator = () => {
+    try {
+        if (configuratorWindow) {
+            configuratorWindow.classList.toggle('show');
+        }
+    } catch (error) {
+        console.error('Ошибка при переключении конфигуратора:', error);
+    }
+};
+
+/**
+ * Закрывает конфигуратор
+ */
+const closeConfigurator = () => {
+    try {
+        if (configuratorWindow) {
+            configuratorWindow.classList.remove('show');
+        }
+    } catch (error) {
+        console.error('Ошибка при закрытии конфигуратора:', error);
+    }
+};
 
 /**
  * Устанавливает тему оформления
  * @param {string} theme - 'light', 'dark' или 'auto'
  */
-function setTheme(theme) {
-    const html = document.documentElement;
-    
-    // Удаляем все предыдущие атрибуты темы
-    html.removeAttribute('data-theme');
-    
-    if (theme === 'auto') {
-        // Для автоматической темы полагаемся на CSS media query
-        // Не устанавливаем data-theme, чтобы сработал @media (prefers-color-scheme: dark)
-        console.log('Автоматическая тема: полагаемся на системные настройки');
-        console.log('prefers-color-scheme:', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    } else {
-        // Устанавливаем конкретную тему
-        html.setAttribute('data-theme', theme);
-        console.log(`Принудительная тема: ${theme}`);
-    }
-    
-    // Сохраняем выбор пользователя
-    localStorage.setItem('theme', theme);
-    
-    console.log(`Тема изменена на: ${theme}`);
-}
-
-/**
- * Загружает сохраненную тему при загрузке страницы
- */
-function loadTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    
-    // Устанавливаем сохраненную тему
-    setTheme(savedTheme);
-    
-    // Обновляем радио-кнопки в конфигураторе
-    const themeRadios = document.querySelectorAll('input[name="theme"]');
-    themeRadios.forEach(radio => {
-        if (radio.value === savedTheme) {
-            radio.checked = true;
+const setTheme = (theme) => {
+    try {
+        const html = document.documentElement;
+        
+        html.removeAttribute('data-theme');
+        
+        if (theme === 'auto') {
+            
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } else {
+            html.setAttribute('data-theme', theme);
         }
-    });
-}
+        
+        localStorage.setItem('selectedTheme', theme);
+        
+        updateThemeRadioButtons(theme);
+        
+        if (window.updateConfiguratorLines) {
+            window.updateConfiguratorLines();
+        }
+    } catch (error) {
+        console.error('Ошибка при установке темы:', error);
+    }
+};
 
 /**
- * Инициализация темы при загрузке страницы
+ * Загружает сохраненную тему
  */
-document.addEventListener('DOMContentLoaded', function() {
-    loadTheme();
-    // Обновляем линии при загрузке
-    if (typeof updateConfiguratorLines === 'function') {
-        updateConfiguratorLines();
+const loadTheme = () => {
+    try {
+        const savedTheme = localStorage.getItem('selectedTheme') || 'light';
+        setTheme(savedTheme);
+    } catch (error) {
+        console.error('Ошибка при загрузке темы:', error);
     }
-});
+};
+
+/**
+ * Обновляет радиокнопки темы
+ * @param {string} theme - Текущая тема
+ */
+const updateThemeRadioButtons = (theme) => {
+    try {
+        const radioButtons = document.querySelectorAll('input[name="theme"]');
+        radioButtons.forEach(radio => {
+            radio.checked = radio.value === theme;
+        });
+    } catch (error) {
+        console.error('Ошибка при обновлении радиокнопок темы:', error);
+    }
+};
+
+
+
+document.addEventListener('DOMContentLoaded', initConfigurator);
+
+window.setTheme = setTheme;
